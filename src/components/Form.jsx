@@ -40,6 +40,14 @@ const Form = ({ createAppointment }) => {
     appointment.id = uuid();
 
     createAppointment(appointment);
+
+    setAppointment({
+      pet: "",
+      owner: "",
+      date: "",
+      hour: "",
+      symptoms: "",
+    });
   };
 
   return (
