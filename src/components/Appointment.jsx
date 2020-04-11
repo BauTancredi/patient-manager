@@ -1,7 +1,7 @@
 import React from "react";
 
-const Appointment = ({ appointment }) => {
-  const { pet, owner, date, hour, symptoms } = appointment;
+const Appointment = ({ appointment, deleteAppointment }) => {
+  const { pet, owner, date, hour, symptoms, id } = appointment;
   return (
     <div className="cita">
       <p>
@@ -19,6 +19,15 @@ const Appointment = ({ appointment }) => {
       <p>
         Symptoms: <span>{symptoms}</span>
       </p>
+
+      <button
+        className="button eliminar u-full-width"
+        onClick={() => {
+          deleteAppointment(id);
+        }}
+      >
+        Delete &times;
+      </button>
     </div>
   );
 };

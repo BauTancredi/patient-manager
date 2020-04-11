@@ -9,6 +9,16 @@ function App() {
     setAppointments([...appointments, appointment]);
   };
 
+  const deleteAppointment = (id) => {
+    const newAppointments = appointments.filter(
+      (appointment) => appointment.id !== id
+    );
+    setAppointments(newAppointments);
+  };
+
+  const title =
+    appointments.length === 0 ? "No appointments" : " Manage your appointments";
+
   return (
     <Fragment>
       <h1>Patient Manager</h1>
@@ -19,9 +29,13 @@ function App() {
             <Form createAppointment={createAppointment} />
           </div>
           <div className="one-half column">
-            <h2>Manage your appointments</h2>
+            <h2>{title}</h2>
             {appointments.map((appointment) => (
-              <Appointment appointment={appointment} key={appointment.id} />
+              <Appointment
+                appointment={appointment}
+                key={appointment.id}
+                deleteAppointment={deleteAppointment}
+              />
             ))}
           </div>
         </div>
